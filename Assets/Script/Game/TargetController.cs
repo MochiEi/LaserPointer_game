@@ -18,7 +18,7 @@ public class TargetController : MonoBehaviour
     private float randY;
     private float randScale;
 
-    private int No;
+    public int No;
     private bool create;
     private bool isNext = true;
 
@@ -70,6 +70,6 @@ public class TargetController : MonoBehaviour
             No++;
         }
 
-        Debug.Log(targetObject.name + "        " + isNext);
+        //Debug.Log(targetObject.name + "        " + isNext);
     }
 }

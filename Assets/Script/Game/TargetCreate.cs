@@ -5,7 +5,10 @@ using UnityEngine;
 
 public class TargetCreate : MonoBehaviour
 {
+    [SerializeField] TargetController controller;
     [SerializeField] Canvas canvas;
+
+    public int num;
 
     private float randX;
     private float randY;
@@ -20,6 +23,9 @@ public class TargetCreate : MonoBehaviour
         isNext = false;
         delayTime = 0;
         canvas = transform.parent.parent.GetComponent<Canvas>();       
+
+        controller = transform.parent.GetComponent<TargetController>();
+        num = controller.No;
     }
 
     // Update is called once per frame
@@ -40,7 +46,7 @@ public class TargetCreate : MonoBehaviour
     {
         if (!collision.gameObject.CompareTag("ScreenCollider") && !isNext)
         {
-            Debug.Log(collision.gameObject.name);
+            //Debug.Log(collision.gameObject.name);
 
             /// キャンバスの座標差
             float canvasX = canvas.transform.position.x / 2;

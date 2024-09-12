@@ -225,6 +225,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &162301418 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4726488682386832677, guid: 864717babac5da044964b8c7bc511829, type: 3}
+  m_PrefabInstance: {fileID: 2477134688080426755}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &210419522
 GameObject:
   m_ObjectHideFlags: 0
@@ -410,12 +415,25 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2887237455621001719, guid: 864717babac5da044964b8c7bc511829, type: 3}
   m_PrefabInstance: {fileID: 2477134688080426755}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 162301418}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &776346517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162301418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99dd4e19ed93db842969454a94b9ebc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetController: {fileID: 1626862114}
 --- !u!1 &803091988
 GameObject:
   m_ObjectHideFlags: 0
@@ -1029,7 +1047,7 @@ RectTransform:
   m_GameObject: {fileID: 1619479272}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1556459391}
@@ -1086,13 +1104,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d367a7633516b35448a8e9fd2824b555, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camWidth: 1280
-  camHeight: 720
+  screenWidth: 1920
+  screenHeight: 1080
+  camWidth: 640
+  camHeight: 480
   FPS: 30
   image: {fileID: 776346513}
-  targetColor: {r: 0.37893072, g: 1, b: 0.1745283, a: 1}
-  colorThreshold: 0.3
-  inCamera: 1
+  targetColor: {r: 1, g: 1, b: 1, a: 1}
+  colorThreshold: 0.1
+  inCamera: 0
 --- !u!1 &1626862112
 GameObject:
   m_ObjectHideFlags: 0
@@ -1153,6 +1173,7 @@ MonoBehaviour:
   - {fileID: 6355110785966623156, guid: c035c9c81fc507a488cd99ee1d672744, type: 3}
   - {fileID: 1211523402312513542, guid: ccf7720527406ed4e815513c79c6d1dc, type: 3}
   targetObject: {fileID: 0}
+  No: 0
 --- !u!1001 &2477134688080426755
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1248,7 +1269,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4726488682386832677, guid: 864717babac5da044964b8c7bc511829, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 776346517}
   m_SourcePrefab: {fileID: 100100000, guid: 864717babac5da044964b8c7bc511829, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

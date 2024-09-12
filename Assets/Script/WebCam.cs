@@ -11,6 +11,11 @@ public class WebCam : MonoBehaviour
     RawImage rawImage;
     WebCamTexture webCamTexture;
 
+    [SerializeField, Header("画面設定")]
+    float screenWidth = 1920.0f;
+    [SerializeField]
+    float screenHeight = 1080.0f;
+
     [SerializeField, Header("カメラ設定 (webカメラの性能に合わせて)")] 
     float camWidth = 1920.0f;
     [SerializeField] 
@@ -27,6 +32,9 @@ public class WebCam : MonoBehaviour
     [SerializeField, Header("インカメ")]
     bool inCamera;
 
+    float differenceX;
+    float differenceY;
+
     void Start()
     {        
         // Webカメラを初期化
@@ -35,6 +43,9 @@ public class WebCam : MonoBehaviour
         // Webカメラの開始
         this.rawImage = GetComponent<RawImage>();
         this.rawImage.texture = this.webCamTexture;
+
+        differenceX = screenWidth / camWidth;
+        differenceY = screenHeight / camHeight;
     }
 
     void Update()
@@ -71,10 +82,10 @@ public class WebCam : MonoBehaviour
                     //Debug.Log($"Laser pointer detected at ({x}, {y})");
 
                     if (!inCamera)
-                        image.transform.position = new Vector3(x, y, 0);
+                        image.transform.position = new Vector3(x * differenceX, y * differenceY, 0);
                     else
-                        image.transform.position = new Vector3(camWidth - x, y, 0);
-                    
+                        image.transform.position = new Vector3(screenWidth - x * differenceX, y * differenceY, 0);
+
                     return;
                 }
             }
@@ -87,8 +98,8 @@ public class WebCam : MonoBehaviour
         float gDiff = Mathf.Abs(pixel.g / 255.0f - targetColor.g);
         float bDiff = Mathf.Abs(pixel.b / 255.0f - targetColor.b);
 
-        if (rDiff < colorThreshold && gDiff < colorThreshold && bDiff < colorThreshold)
-            Debug.Log("R:" + rDiff.ToString("n1") + "  G:" + gDiff.ToString("n1") + "  B:" + bDiff.ToString("n1"));
+        //if (rDiff < colorThreshold && gDiff < colorThreshold && bDiff < colorThreshold)
+        //    Debug.Log("R:" + rDiff.ToString("n1") + "  G:" + gDiff.ToString("n1") + "  B:" + bDiff.ToString("n1"));
         
         return (rDiff < colorThreshold && gDiff < colorThreshold && bDiff < colorThreshold);
     }
